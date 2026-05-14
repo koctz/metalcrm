@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MetalCRM Pro - Connected</title>
+<title>MetalCRM Pro</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Unbounded:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
@@ -15,39 +15,30 @@
   --blue:#3b82f6; --green:#22c55e; --red:#ef4444; --yellow:#eab308;
   --mono:'JetBrains Mono',monospace; --display:'Unbounded',sans-serif;
 }
-
 html.light-mode {
   --bg:#f8fafc; --s1:#f1f5f9; --s2:#e2e8f0; --s3:#cbd5e1;
   --b1:rgba(15,23,42,0.07); --b2:rgba(15,23,42,0.13);
   --t1:#0f172a; --t2:#475569; --t3:#94a3b8;
   --accent:#d97706; --accent2:#ea580c;
 }
-
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:var(--mono);background:var(--bg);color:var(--t1);min-height:100vh;font-size:13px;line-height:1.6;overflow-x:hidden;transition:background .3s,color .3s}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 600px 400px at 0% 0%,rgba(249,115,22,.06),transparent 60%),radial-gradient(ellipse 400px 600px at 100% 100%,rgba(59,130,246,.05),transparent 60%);pointer-events:none;z-index:0}
-
 #root{position:relative;z-index:1}
-
 .container{max-width:1400px;margin:0 auto;padding:24px 20px}
-
 .header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px;flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:12px}
 .logo-icon{width:42px;height:42px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 24px rgba(249,115,22,.4);flex-shrink:0}
 .logo-text{font-family:var(--display);font-size:18px;font-weight:900;letter-spacing:-.5px}
 .logo-sub{font-size:10px;color:var(--t3);letter-spacing:2px;text-transform:uppercase;margin-top:1px}
-
 .hactions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-
 .btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:8px;border:1px solid transparent;font-family:var(--mono);font-size:12px;font-weight:700;cursor:pointer;transition:all .15s;white-space:nowrap;background:var(--s2);color:var(--t2);border-color:var(--b2)}
 .btn:hover{color:var(--t1);background:var(--s3)}
 .btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
 .btn-primary:hover{background:var(--accent2)}
 .btn-green{background:rgba(34,197,94,.1);color:var(--green);border-color:rgba(34,197,94,.2)}
-.btn-green:hover{background:rgba(34,197,94,.18)}
 .btn-danger{background:rgba(239,68,68,.1);color:var(--red);border-color:rgba(239,68,68,.2)}
-
 .auth-container{max-width:400px;margin:100px auto;background:var(--s1);border:1px solid var(--b1);border-radius:14px;padding:30px}
 .auth-title{font-family:var(--display);font-size:18px;font-weight:900;margin-bottom:24px;text-align:center}
 .form-field{margin-bottom:14px}
@@ -55,23 +46,19 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .form-field input{width:100%;background:var(--s2);border:1px solid var(--b2);border-radius:8px;padding:9px 12px;font-family:var(--mono);font-size:12px;color:var(--t1);outline:none}
 .form-field input:focus{border-color:var(--accent)}
 .form-field input::placeholder{color:var(--t3)}
-
 .table-wrap{background:var(--s1);border:1px solid var(--b1);border-radius:14px;overflow:hidden;margin-bottom:24px}
 table{width:100%;border-collapse:collapse}
 thead th{padding:11px 14px;text-align:left;font-size:10px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:1.5px;background:var(--s2);border-bottom:1px solid var(--b1)}
 tbody tr{border-bottom:1px solid var(--b1)}
 tbody tr:hover{background:var(--s2)}
 td{padding:11px 14px;vertical-align:middle}
-
 .loading{text-align:center;padding:40px;color:var(--t3)}
 .spinner{display:inline-block;width:20px;height:20px;border:2px solid var(--b2);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-
 #toast{position:fixed;bottom:24px;right:24px;background:var(--s3);border:1px solid var(--b2);border-radius:10px;padding:11px 16px;font-size:12px;color:var(--t1);z-index:300;transform:translateY(14px);opacity:0;transition:all .2s;pointer-events:none}
 #toast.on{transform:translateY(0);opacity:1}
 #toast.ok{border-color:rgba(34,197,94,.35);color:var(--green)}
 #toast.err{border-color:rgba(239,68,68,.35);color:var(--red)}
-
 .empty{text-align:center;padding:56px 24px;color:var(--t3)}
 </style>
 </head>
@@ -81,19 +68,16 @@ td{padding:11px 14px;vertical-align:middle}
   <div class="container">
     <header class="header" style="margin-bottom: 40px;">
       <div class="logo">
-        <div class="logo-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M2 20h20M4 20V10l8-6 8 6v10"/><path d="M10 20v-6h4v6"/></svg>
-        </div>
+        <div class="logo-icon">🏢</div>
         <div>
           <div class="logo-text">MetalCRM</div>
-          <div class="logo-sub">Connected Backend ✓</div>
+          <div class="logo-sub">Connected ✓</div>
         </div>
       </div>
       <div class="hactions" id="header-actions"></div>
     </header>
 
-    <!-- AUTH SCREEN -->
-    <div id="auth-screen" class="auth-container" style="display:none">
+    <div id="auth-screen" class="auth-container">
       <div class="auth-title" id="auth-title">Вход</div>
       <div class="form-field">
         <label>Email</label>
@@ -114,17 +98,14 @@ td{padding:11px 14px;vertical-align:middle}
       </div>
     </div>
 
-    <!-- APP SCREEN -->
     <div id="app-screen" style="display:none">
       <div style="margin-bottom:20px" id="stats-container"></div>
-
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
         <button class="btn btn-primary" onclick="loadObjects()">📦 Объекты</button>
         <button class="btn btn-primary" onclick="loadTeam()">👥 Команда</button>
-        <button class="btn btn-green" onclick="openNewObjectModal()">➕ Новый объект</button>
+        <button class="btn btn-green" onclick="loadObjects()">➕ Новый объект</button>
         <button class="btn btn-danger" onclick="logout()">🚪 Выход</button>
       </div>
-
       <div id="content-container"></div>
     </div>
   </div>
@@ -133,18 +114,12 @@ td{padding:11px 14px;vertical-align:middle}
 <div id="toast"></div>
 
 <script>
-// ═══════════════════════════════════════════════════════════════════════════════
-// API CONFIG
-// ═══════════════════════════════════════════════════════════════════════════════
-
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+// CONFIG
+const API_URL = window.location.origin; // Используем текущий домен
 let token = localStorage.getItem('token');
 let currentUser = JSON.parse(localStorage.getItem('user') || '{}');
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// UTILITY FUNCTIONS
-// ═══════════════════════════════════════════════════════════════════════════════
-
+// UTILS
 function toast(msg, type = '') {
   const el = document.getElementById('toast');
   el.textContent = msg;
@@ -159,11 +134,6 @@ function formatMoney(n) {
   return String(n);
 }
 
-function formatDate(s) {
-  if (!s) return '';
-  return new Date(s).toLocaleDateString('ru-RU');
-}
-
 async function apiCall(endpoint, method = 'GET', body = null) {
   const options = {
     method,
@@ -176,7 +146,7 @@ async function apiCall(endpoint, method = 'GET', body = null) {
   if (body) options.body = JSON.stringify(body);
 
   try {
-    const response = await fetch(`${API_URL}${endpoint}`, options);
+    const response = await fetch(API_URL + '/api' + endpoint, options);
     const data = await response.json();
 
     if (!response.ok) {
@@ -190,10 +160,7 @@ async function apiCall(endpoint, method = 'GET', body = null) {
   }
 }
 
-// ═══════════════════════════════════════════════════════════════════════════════
 // AUTH
-// ═══════════════════════════════════════════════════════════════════════════════
-
 function showAuthScreen() {
   document.getElementById('auth-screen').style.display = 'block';
   document.getElementById('app-screen').style.display = 'none';
@@ -240,9 +207,9 @@ async function handleLogin() {
         toast('Заполните имя пользователя и полное имя', 'err');
         return;
       }
-      response = await apiCall('/api/auth/register', 'POST', { username, email, password, full_name });
+      response = await apiCall('/auth/register', 'POST', { username, email, password, full_name });
     } else {
-      response = await apiCall('/api/auth/login', 'POST', { email, password });
+      response = await apiCall('/auth/login', 'POST', { email, password });
     }
 
     token = response.token;
@@ -267,21 +234,16 @@ function logout() {
 
 function updateHeader() {
   const header = document.getElementById('header-actions');
-  header.innerHTML = `
-    <div style="color: var(--t3); font-size: 11px;">👤 ${currentUser.full_name || currentUser.username}</div>
-  `;
+  header.innerHTML = '<div style="color: var(--t3); font-size: 11px;">👤 ' + (currentUser.full_name || currentUser.username) + '</div>';
 }
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// LOAD DATA
-// ═══════════════════════════════════════════════════════════════════════════════
-
+// DATA LOADING
 async function loadObjects() {
   try {
     const container = document.getElementById('content-container');
     container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Загрузка объектов...</p></div>';
 
-    const response = await apiCall('/api/objects');
+    const response = await apiCall('/objects');
     const objects = response.objects || [];
 
     if (objects.length === 0) {
@@ -292,18 +254,7 @@ async function loadObjects() {
     let html = '<div class="table-wrap"><table><thead><tr><th>Объект</th><th>Заказчик</th><th>Статус</th><th>Договор</th><th>Действия</th></tr></thead><tbody>';
     
     objects.forEach(obj => {
-      html += `
-        <tr>
-          <td><strong>${obj.name}</strong></td>
-          <td>${obj.client || '—'}</td>
-          <td>${obj.status || '—'}</td>
-          <td>${formatMoney(obj.contract)} ₽</td>
-          <td>
-            <button class="btn" onclick="viewObject(${obj.id})" style="font-size:10px;padding:4px 8px">Открыть</button>
-            <button class="btn btn-danger" onclick="deleteObject(${obj.id})" style="font-size:10px;padding:4px 8px">Удалить</button>
-          </td>
-        </tr>
-      `;
+      html += '<tr><td><strong>' + obj.name + '</strong></td><td>' + (obj.client || '—') + '</td><td>' + (obj.status || '—') + '</td><td>' + formatMoney(obj.contract) + ' ₽</td><td><button class="btn" onclick="viewObject(' + obj.id + ')" style="font-size:10px;padding:4px 8px">Открыть</button> <button class="btn btn-danger" onclick="deleteObject(' + obj.id + ')" style="font-size:10px;padding:4px 8px">Удалить</button></td></tr>';
     });
     
     html += '</tbody></table></div>';
@@ -316,9 +267,9 @@ async function loadObjects() {
 async function loadTeam() {
   try {
     const container = document.getElementById('content-container');
-    container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Загрузка данных команды...</p></div>';
+    container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Загрузка команды...</p></div>';
 
-    const response = await apiCall('/api/team');
+    const response = await apiCall('/team');
     const team = response.team || [];
 
     if (team.length === 0) {
@@ -329,15 +280,7 @@ async function loadTeam() {
     let html = '<div class="table-wrap"><table><thead><tr><th>Менеджер</th><th>Объектов</th><th>Контрактов</th><th>Оплачено</th><th>Процент</th></tr></thead><tbody>';
     
     team.forEach(mgr => {
-      html += `
-        <tr>
-          <td><strong>${mgr.name}</strong></td>
-          <td>${mgr.objects_count}</td>
-          <td>${formatMoney(mgr.total_contract)} ₽</td>
-          <td style="color:var(--green)">${formatMoney(mgr.total_paid)} ₽</td>
-          <td>${mgr.payment_percentage}%</td>
-        </tr>
-      `;
+      html += '<tr><td><strong>' + mgr.name + '</strong></td><td>' + mgr.objects_count + '</td><td>' + formatMoney(mgr.total_contract) + ' ₽</td><td style="color:var(--green)">' + formatMoney(mgr.total_paid) + ' ₽</td><td>' + mgr.payment_percentage + '%</td></tr>';
     });
     
     html += '</tbody></table></div>';
@@ -349,8 +292,8 @@ async function loadTeam() {
 
 async function viewObject(id) {
   try {
-    const data = await apiCall(`/api/objects/${id}`);
-    alert(`📦 ${data.name}\n\nКлиент: ${data.client}\nВес: ${data.weight} т\nСтатус: ${data.status}\nКонтракт: ${formatMoney(data.contract)} ₽`);
+    const data = await apiCall('/objects/' + id);
+    alert('📦 ' + data.name + '\n\nКлиент: ' + data.client + '\nВес: ' + data.weight + ' т\nСтатус: ' + data.status + '\nКонтракт: ' + formatMoney(data.contract) + ' ₽');
   } catch (err) {
     // Error toasted
   }
@@ -360,7 +303,7 @@ async function deleteObject(id) {
   if (!confirm('Удалить объект?')) return;
   
   try {
-    await apiCall(`/api/objects/${id}`, 'DELETE');
+    await apiCall('/objects/' + id, 'DELETE');
     toast('✓ Удалено', 'ok');
     loadObjects();
   } catch (err) {
@@ -368,36 +311,7 @@ async function deleteObject(id) {
   }
 }
 
-async function openNewObjectModal() {
-  const name = prompt('Название объекта');
-  if (!name) return;
-
-  const client = prompt('Заказчик');
-  const weight = prompt('Вес (тонны)');
-
-  if (!weight) {
-    toast('Вес обязателен', 'err');
-    return;
-  }
-
-  try {
-    await apiCall('/api/objects', 'POST', {
-      name,
-      client,
-      weight: parseFloat(weight),
-      status: 'В проработке'
-    });
-    toast('✓ Объект создан', 'ok');
-    loadObjects();
-  } catch (err) {
-    // Error toasted
-  }
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
 // INIT
-// ═══════════════════════════════════════════════════════════════════════════════
-
 if (token && currentUser.id) {
   showAppScreen();
 } else {
